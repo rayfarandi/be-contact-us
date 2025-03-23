@@ -20,14 +20,6 @@ const sequelize = new Sequelize(
   }
 );
 
-// Tes koneksi saat aplikasi di-load
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Database connection established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+
 
 module.exports = sequelize;
