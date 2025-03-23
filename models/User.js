@@ -41,7 +41,7 @@ const User = sequelize.define('User', {
             if (!angka || !huruf) {
                 throw new Error("Password must contain at least one letter and one number");
             }
-            if(!validator.isLength(value, { min: 6, max: 20 })){
+            if(!validator.isLength(value, { min: 6, max: 100 })){
                 throw new Error("Password must be between 6 and 20 characters")
             }
         }
