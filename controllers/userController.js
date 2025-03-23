@@ -17,7 +17,7 @@ exports.register = async (req, res) => {
     const userExists = await User.findOne({ where: { email } });
 
     if (userExists) {
-      return res.status(400).json({
+      return res.status(409).json({
         success: false,
         message: 'User already exists'
       });
@@ -33,7 +33,7 @@ exports.register = async (req, res) => {
     // Generate token
     const token = generateToken(user.id);
 
-    res.status(201).json({
+    res.status(201).json({ // tampilkan response dengan status 201 (Created)
       success: true,
       user: {
         id: user.id,
@@ -43,7 +43,7 @@ exports.register = async (req, res) => {
       },
       token
     });
-  } catch (error) {
+  } catch (error) { //jika error tidak bisa dihandle
     res.status(500).json({
       success: false,
       message: 'Server Error',
@@ -70,7 +70,7 @@ exports.login = async (req, res) => {
     // Check if password matches
     const isMatch = await user.matchPassword(password);
 
-    if (!isMatch) {
+    if (!isMatch) { //jika password tidak cocok
       return res.status(401).json({
         success: false,
         message: 'Invalid credentials'
@@ -80,7 +80,7 @@ exports.login = async (req, res) => {
     // Generate token
     const token = generateToken(user.id);
 
-    res.status(200).json({
+    res.status(200).json({ //tampilkan response
       success: true,
       user: {
         id: user.id,
@@ -100,7 +100,7 @@ exports.login = async (req, res) => {
 };
 
 
-exports.getMe = async (req, res) => {
+exports.getUser = async (req, res) => { //untuk mengambil data user
   try {
     const user = await User.findByPk(req.user.id, {
       attributes: { exclude: ['password'] }
