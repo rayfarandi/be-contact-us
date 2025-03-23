@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const morgan = require('morgan');
 
 // Load environment variables
 dotenv.config();
@@ -18,6 +19,8 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 
 // Mount routes
 app.use('/api/auth', authRoutes);
