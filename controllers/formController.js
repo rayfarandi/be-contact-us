@@ -20,7 +20,7 @@ exports.submitForm = async (req, res) => {
       subject,
       message,
       userId : req.user.id
-      //   userId: req.user ? req.user.id : null // Optional: associate with user if logged in
+        //userId: req.user ? req.user.id : null // Optional: associate with user if logged in
     });
 
     res.status(201).json({

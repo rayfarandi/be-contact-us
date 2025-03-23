@@ -11,10 +11,11 @@ const {
 const { protect, adminOnly } = require('../middleware/authMiddleware');
 
 //  jika mengunakan Public route
-//router.post('/', protect,submitForm);
+// router.post('/',submitForm);
 
 // hanya bisa jika sudah login 
 router.post('/', protect,submitForm);
+
 
 // view all forms by user
 router.get('/mine', protect, getMyForms);
