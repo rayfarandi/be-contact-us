@@ -14,7 +14,7 @@ Users can register, log in, and submit contact messages. Admin users can view an
 - 🧾 Sequelize ORM for PostgreSQL, MySQL, or SQLite
 - 🔄 Auto password hashing with bcrypt
 - 🌍 CORS and environment variable support
-- 🪵 Request logging using `morgan`
+- 🧾 Request logging using `morgan`
 - 🧪 API tested via Postman
 
 ---
@@ -120,6 +120,7 @@ npm start
 │   └── db.js
 ├── .env
 ├── server.js
+├── seed.js
 └── README.md
 ```
 ## 🔒 Authorization
