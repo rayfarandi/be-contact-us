@@ -78,7 +78,7 @@ const Form = sequelize.define('Form', {
   userId: {
     type: DataTypes.UUID,
     allowNull: false, // tiap form harus memiliki user yang membuatnya
-    // allowNull: true, // tiap form tidak harus memiliki user yang membuatnya
+     //allowNull: true, // tiap form tidak harus memiliki user yang membuatnya
     references: {
       model: 'User',// nama tabel user di database
       key: 'id'
