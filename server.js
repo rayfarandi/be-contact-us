@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Import database
-const { syncDatabase } = require('./models');
+const { syncDatabase } = require('./models/index');
 
 // Import routes
 const authRoutes = require('./router/authRoutes');
@@ -43,6 +43,10 @@ app.use((err, req, res, next) => {
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port localhost:${PORT}`);
-});
+syncDatabase().then(() => { // Synchronize database, terlebih dahulu
+    app.listen(PORT, () => {
+    console.log(`Server running on port localhost:${PORT}`);
+    });
+    }).catch(err => {
+    console.error('Failed to start server:', err);
+    });
