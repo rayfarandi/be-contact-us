@@ -7,13 +7,20 @@ exports.submitForm = async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
 
+    if (!req.user) { // Check if user is logged in
+        return res.status(401).json({
+            success: false,
+            message: 'you must be logged in to submit a form'
+        })
+    }
     // Create form submission
     const form = await Form.create({
       name,
       email,
       subject,
       message,
-      userId: req.user ? req.user.id : null // Optional: associate with user if logged in
+      userId : req.user.id
+      //   userId: req.user ? req.user.id : null // Optional: associate with user if logged in
     });
 
     res.status(201).json({
@@ -167,6 +174,29 @@ exports.deleteForm = async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'Form deleted successfully'
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Server Error',
+      error: error.message
+    });
+  }
+};
+
+// @desc    Get my own submitted forms
+// @route   GET /api/forms/mine
+// @access  Private (User)
+exports.getMyForms = async (req, res) => {
+  try {
+    const forms = await Form.findAll({
+      where: { userId: req.user.id },
+      order: [['createdAt', 'DESC']]
+    });
+
+    res.status(200).json({
+      success: true,
+      data: forms
     });
   } catch (error) {
     res.status(500).json({

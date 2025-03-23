@@ -5,12 +5,20 @@ const {
   getForms, 
   getForm, 
   updateForm, 
-  deleteForm 
+  deleteForm,
+  getMyForms
 } = require('../controllers/formController');
 const { protect, adminOnly } = require('../middleware/authMiddleware');
 
-// Public route
-router.post('/', submitForm);
+//  jika mengunakan Public route
+//router.post('/', protect,submitForm);
+
+// hanya bisa jika sudah login 
+router.post('/', protect,submitForm);
+
+// view all forms by user
+router.get('/mine', protect, getMyForms);
+
 
 // Protected admin routes
 router.get('/', protect, adminOnly, getForms);
