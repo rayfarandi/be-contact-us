@@ -59,25 +59,26 @@ JWT_EXPIRE=1d
  ```
 Create Db first, name is "sequelize"
 
-Run on your terminal project
-node seed.js
-```
- 
- ### If you're using Sequelize sync:
- 
- ```
- await sequelize.sync({ force: false }); // in index.js
- ```
-### Or, if you're using Sequelize CLI:
- ```
- npx sequelize-cli db:migrate
+"Hapus datadari tabel sequelize di database (pastikan data bisa dihapus)"
+
+npx sequelize-cli db:migrate:undo:all
+
+"Jalankan migrasi ulang"
+
+npx sequelize-cli db:migrate
+
+"Jalankan seeder lagi"
+
 npx sequelize-cli db:seed:all
 
- ```
+
+```
+ 
+
  ## Start the Server
  
  ```
-npm start
+npm run dev
 
 ```
 
@@ -132,7 +133,13 @@ npm start
 │   ├── authRoutes.js
 │   └── formRoutes.js
 ├── config/
-│   └── db.js
+│   └── config.js
+├── seeders/
+│   ├── demo_user.js
+│   └── demo_form.js
+├── migrations/
+│   ├── demo_user.js
+│   └── demo_form.js
 ├── .env
 ├── server.js
 ├── seed.js
