@@ -1,6 +1,6 @@
 # 📬 Contact Form API
 
-This is a RESTful Contact Form API built with **Node.js**, **Express.js**, **Sequelize ORM**, **JWT authentication**, and **role-based access control**.
+This is a RESTful Contact Form API built with **Node.js 14**, **Express.js**, **Sequelize ORM**, **JWT authentication**, and **role-based access control**.
 Users can register, log in, and submit contact messages. Admin users can view and manage all messages.
 
 ---
