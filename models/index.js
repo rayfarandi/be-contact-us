@@ -1,33 +1,38 @@
-const Form = require("./Form");
-const User = require("./User");
-const sequelize = require("../config/db");
+"use strict";
 
-User.hasMany(Form, { foreignKey: "userId", as: "forms" }); // satu user bisa punya banyak form
-Form.belongsTo(User, { foreignKey: "userId", as: "user" }); //setiap form dimiliki satu user
+const fs = require("fs");
+const path = require("path");
+const Sequelize = require("sequelize");
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || "development";
+const config = require("../config/config.js")[env];
 
+const db = {};
 
-// Fungsi untuk menyinkronkan semua model dengan database
-const syncDatabase = async () => {
-    try {
-      // Mencoba menghubungkan ke database
-      await sequelize.authenticate();
-      console.log('Database connection has been established successfully.');
-      
-      // Menyinkronkan semua model dengan database
-      // force: true -> akan menghapus tabel yang sudah ada (development)
-      // force: false -> tidak menghapus tabel yang sudah ada (production)
-      // alter: true -> mengubah struktur tabel sesuai dengan model
-      await sequelize.sync({ force: false });
-      console.log('All models were synchronized successfully.');
-    } catch (error) {
-      console.error('Unable to connect to the database:', error);
-    }
-  };
-  
- 
-module.exports = {
-  sequelize,
-  User,
-  Form,
-  syncDatabase
-};
+// Inisialisasi Sequelize
+const sequelize = new Sequelize(
+  config.database,
+  config.username,
+  config.password,
+  config
+);
+
+// Baca semua model dan import
+fs.readdirSync(__dirname)
+  .filter((file) => file !== basename && file.slice(-3) === ".js")
+  .forEach((file) => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  });
+
+// Setup relasi antar model
+Object.keys(db).forEach((modelName) => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;

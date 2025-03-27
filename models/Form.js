@@ -1,97 +1,104 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
-const validator = require('validator');
+"use strict";
+const { DataTypes } = require("sequelize");
+const validator = require("validator");
 
-const Form = sequelize.define('Form', {
-  id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
-    primaryKey: true
-  },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate:{
-      notEmpty:{ // Validasi name tidak boleh kosong dari squelize
-        msg:"Name is required"
+module.exports = (sequelize) => {
+  const Form = sequelize.define(
+    "Form",
+    {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
       },
-      isFullName(value){ // Validasi name harus mengandung huruf dan spasi [full name]
-        if(!/^[a-zA-Z\s]+$/.test(value)){
-          throw new Error("Name must be a sentence with spaces, no numbers or special characters, just full name");
-        }
-      }
-    }
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty:{ // Validasi email tidak boleh kosong dari squelize
-        msg:"Email is required"
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "Name is required" },
+          isFullName(value) {
+            if (!/^[a-zA-Z\s]+$/.test(value)) {
+              throw new Error(
+                "Name must be a sentence with spaces, no numbers or special characters, just full name"
+              );
+            }
+          },
+        },
       },
-      isEmail(value){ // Validasi email harus valid dengan validator
-        if(!validator.isEmail(value)){
-          throw new Error("Email is not valid");
-        }
-      }
-    }
-  },
-  subject: { // berisi subjek dari form[kerjasama, pemesanan, dll]
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty:{ // Validasi subject tidak boleh kosong dari squelize
-        msg:"Subject is required"
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "Email is required" },
+          isEmail(value) {
+            if (!validator.isEmail(value)) {
+              throw new Error("Email is not valid");
+            }
+          },
+        },
       },
-      len:{
-        args: [3, 100],
-        msg: "Subject must be between 3 and 100 characters"
-      }
-    }
-  },
-  message: { // validasi message mencegah spam
-    type: DataTypes.TEXT,
-    allowNull: false,
-    validate: {
-      notEmpty:{
-        msg:"Message is required"
+      subject: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "Subject is required" },
+          len: {
+            args: [3, 100],
+            msg: "Subject must be between 3 and 100 characters",
+          },
+        },
       },
-      isClean(value){ // Validasi message mencegah spam
-        const bannedWords = ['spam', 'scam', 'fraud', 'http','<script','<iframe','drop table','--'];
-        const lower = value.toLowerCase();
+      message: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          notEmpty: { msg: "Message is required" },
+          len: {
+            args: [10, 1000],
+            msg: "Message must be between 10 and 1000 characters",
+          },
+          isClean(value) {
+            const bannedWords = [
+              "spam",
+              "scam",
+              "fraud",
+              "http",
+              "<script",
+              "<iframe",
+              "drop table",
+              "--",
+            ];
+            const lower = value.toLowerCase();
 
-        for(const word of bannedWords) { // jika message mengandung kata spam di atas
-          if(lower.includes(word)){
-            throw new Error(`Message contain unsafe content : "${word}"`);
-          }
-        }
-        if (value.length > 1000) { // Jika message lebih dari 1000 karakter
-          throw new Error("Message must be less than 1000 characters");
-        }
+            for (const word of bannedWords) {
+              if (lower.includes(word)) {
+                throw new Error(`Message contains unsafe content: "${word}"`);
+              }
+            }
+          },
+        },
       },
-      len: {
-        args: [10, 1000],
-        msg: "Message must be between 10 and 1000 characters"
-      }
-    }
-  },
-  userId: {
-    type: DataTypes.UUID,
-    allowNull: false, // tiap form harus memiliki user yang membuatnya
-     //allowNull: true, // tiap form tidak harus memiliki user yang membuatnya
-    references: {
-      model: 'User',// nama tabel user di database
-      key: 'id'
+      userId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+          model: "Users", // Sesuai dengan nama tabel Users di database
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
+      status: {
+        type: DataTypes.ENUM("pending", "in-progress", "resolved"),
+        defaultValue: "pending",
+      },
     },
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE'
-  },
-  status: {
-    type: DataTypes.ENUM('pending', 'in-progress', 'resolved'),
-    defaultValue: 'pending'
-  }
-}, {
-  timestamps: true
-});
+    { timestamps: true }
+  );
 
-module.exports = Form;
+  Form.associate = (models) => {
+    Form.belongsTo(models.User, { foreignKey: "userId", as: "user" });
+  };
+
+  return Form;
+};
