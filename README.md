@@ -1,6 +1,6 @@
 # 📬 Contact Form API
 
-This is a RESTful Contact Form API built with **Node.js**, **Express.js**, **Sequelize ORM**, **JWT authentication**, and **role-based access control**.
+This is a RESTful Contact Form API built with **Node.js 14**, **Express.js**, **Sequelize ORM**, **JWT authentication**, and **role-based access control**.
 Users can register, log in, and submit contact messages. Admin users can view and manage all messages.
 
 ---
@@ -38,31 +38,47 @@ cd contact-form-api
  #### Create a .env file in the root directory and fill in your environment variables:
  
  ```
- PORT=5000
-DATABASE_URL=your_database_connection_string
-JWT_SECRET=your_jwt_secret
+# Database Configuration
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD="your pass db"
+DB_NAME=sequelize "name on your DB"
+DB_HOST=localhost
+
+# Server Configuration
+PORT=3001
+
+
+# JWT Secret
+JWT_SECRET="test"
 JWT_EXPIRE=1d
-NODE_ENV=development
 
  ```
  
  ## Run Migrations or Sync Models
- 
- ### If you're using Sequelize sync:
- 
  ```
- await sequelize.sync({ force: false }); // in index.js
- ```
-### Or, if you're using Sequelize CLI:
- ```
- npx sequelize-cli db:migrate
+Create Db first, name is "sequelize"
+
+"Hapus datadari tabel sequelize di database (pastikan data bisa dihapus)"
+
+npx sequelize-cli db:migrate:undo:all
+
+"Jalankan migrasi ulang"
+
+npx sequelize-cli db:migrate
+
+"Jalankan seeder lagi"
+
 npx sequelize-cli db:seed:all
 
- ```
+
+```
+ 
+
  ## Start the Server
  
  ```
-npm start
+npm run dev
 
 ```
 
@@ -86,6 +102,10 @@ npm start
  | `GET` | `/api/forms/mine` | Get current user’s submitted forms |Auth User|
  | `PATCH` | `/api/forms/:id` | Update form status (e.g. approve) |Admin|
  | `DELETE` | `/api/forms/:id` | Delete a form |Admin|
+
+ ## 🛠️ Postman Documentasion
+ 
+ - [Documentasion API](https://documenter.getpostman.com/view/6518390/2sAYkLmwwq)
 
  ## 👥 User Roles
 - User: Can register, log in, and submit/view their own forms.
@@ -117,7 +137,13 @@ npm start
 │   ├── authRoutes.js
 │   └── formRoutes.js
 ├── config/
-│   └── db.js
+│   └── config.js
+├── seeders/
+│   ├── demo_user.js
+│   └── demo_form.js
+├── migrations/
+│   ├── demo_user.js
+│   └── demo_form.js
 ├── .env
 ├── server.js
 ├── seed.js
