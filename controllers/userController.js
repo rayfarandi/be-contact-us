@@ -63,7 +63,7 @@ exports.login = async (req, res) => {
     if (!user) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'User Not Found'
       });
     }
 
@@ -73,7 +73,7 @@ exports.login = async (req, res) => {
     if (!isMatch) { //jika password tidak cocok
       return res.status(401).json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'Invalid Password Credentials'
       });
     }   
     // Generate token
