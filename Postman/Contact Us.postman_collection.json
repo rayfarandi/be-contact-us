@@ -1,0 +1,1840 @@
+{
+	"info": {
+		"_postman_id": "2b509701-dcdf-46be-848d-e5fa11b3a283",
+		"name": "Contact Us",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6518390"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "get all post on user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/forms",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forms"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"description": "'pending', 'in-progress', 'resolved'",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/forms",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"forms"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "pending",
+											"description": "'pending', 'in-progress', 'resolved'",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1323"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52b-x0Zw/IsJmHPgho8S4p/caSPWm9c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 06:45:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"pagination\": {\n        \"total\": 3,\n        \"pages\": 1,\n        \"currentPage\": 1,\n        \"limit\": 10\n    },\n    \"data\": [\n        {\n            \"id\": \"b3bb2c44-ca79-469a-92e9-a9bb85f22f19\",\n            \"name\": \"rio de\",\n            \"email\": \"rio@dewa.com\",\n            \"subject\": \"Penawaran\",\n            \"message\": \"saya ingin mengajukan penawaran di sini\",\n            \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n            \"status\": \"in-progress\",\n            \"createdAt\": \"2025-03-27T06:44:00.397Z\",\n            \"updatedAt\": \"2025-03-27T06:44:27.233Z\",\n            \"user\": {\n                \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n                \"name\": \"John Doe\",\n                \"email\": \"johndoe@example.com\"\n            }\n        },\n        {\n            \"id\": \"323e4567-e89b-12d3-a456-426614174002\",\n            \"name\": \"user\",\n            \"email\": \"user@example.com\",\n            \"subject\": \"Kerjasama\",\n            \"message\": \"Saya ingin bekerja sama dengan perusahaan Anda.\",\n            \"userId\": \"223e4567-e89b-12d3-a456-426614174001\",\n            \"status\": \"pending\",\n            \"createdAt\": \"2025-03-27T06:42:56.986Z\",\n            \"updatedAt\": \"2025-03-27T06:42:56.986Z\",\n            \"user\": {\n                \"id\": \"223e4567-e89b-12d3-a456-426614174001\",\n                \"name\": \"User\",\n                \"email\": \"user@example.com\"\n            }\n        },\n        {\n            \"id\": \"423e4567-e89b-12d3-a456-426614174003\",\n            \"name\": \"user\",\n            \"email\": \"user@example.com\",\n            \"subject\": \"Pemesanan\",\n            \"message\": \"Saya ingin memesan produk dari perusahaan Anda.\",\n            \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n            \"status\": \"in-progress\",\n            \"createdAt\": \"2025-03-27T06:42:56.986Z\",\n            \"updatedAt\": \"2025-03-27T06:42:56.986Z\",\n            \"user\": {\n                \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n                \"name\": \"John Doe\",\n                \"email\": \"johndoe@example.com\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "get all post with catagory",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/forms?limit=1&page=1&status=pending",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"forms"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "status",
+											"value": "pending",
+											"description": "'pending', 'in-progress', 'resolved'"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "494"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ee-LnK55ruAROg7KI3zUiTZUhtcoww\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 06:45:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"pagination\": {\n        \"total\": 1,\n        \"pages\": 1,\n        \"currentPage\": 1,\n        \"limit\": 1\n    },\n    \"data\": [\n        {\n            \"id\": \"323e4567-e89b-12d3-a456-426614174002\",\n            \"name\": \"user\",\n            \"email\": \"user@example.com\",\n            \"subject\": \"Kerjasama\",\n            \"message\": \"Saya ingin bekerja sama dengan perusahaan Anda.\",\n            \"userId\": \"223e4567-e89b-12d3-a456-426614174001\",\n            \"status\": \"pending\",\n            \"createdAt\": \"2025-03-27T06:42:56.986Z\",\n            \"updatedAt\": \"2025-03-27T06:42:56.986Z\",\n            \"user\": {\n                \"id\": \"223e4567-e89b-12d3-a456-426614174001\",\n                \"name\": \"User\",\n                \"email\": \"user@example.com\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "edit form status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "in-progress",
+									"description": "'pending', 'in-progress', 'resolved'",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/forms/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "710ded72-554f-4bfc-8484-6c00a290428d",
+									"description": "id form"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successs",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "status",
+											"value": "in-progress",
+											"description": "'pending', 'in-progress', 'resolved'",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/forms/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"forms",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "b3bb2c44-ca79-469a-92e9-a9bb85f22f19",
+											"description": "id form"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "331"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14b-E6bJmb38dIjocUW/EG6osgMf87g\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 06:44:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"b3bb2c44-ca79-469a-92e9-a9bb85f22f19\",\n        \"name\": \"rio de\",\n        \"email\": \"rio@dewa.com\",\n        \"subject\": \"Penawaran\",\n        \"message\": \"saya ingin mengajukan penawaran di sini\",\n        \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n        \"status\": \"in-progress\",\n        \"createdAt\": \"2025-03-27T06:44:00.397Z\",\n        \"updatedAt\": \"2025-03-27T06:44:27.233Z\"\n    }\n}"
+						},
+						{
+							"name": "error:Form not found",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "status",
+											"value": "in-progress",
+											"description": "'pending', 'in-progress', 'resolved'",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/forms/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"forms",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "710ded72-554f-4bfc-8484-6c00a290428d",
+											"description": "id form"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-uqha6DV/zzB+8ej81nPHM/wBY84\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 20:04:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Form not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/forms/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "710ded72-554f-4bfc-8484-6c00a290428d"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/forms/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"forms",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "b3bb2c44-ca79-469a-92e9-a9bb85f22f19"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-Tncicxj/zF+SngpWPAeCHA3H4VM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 06:47:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Form deleted successfully\"\n}"
+						},
+						{
+							"name": "error:Form not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/forms/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"forms",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "710ded72-554f-4bfc-8484-6c00a290428d"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-uqha6DV/zzB+8ej81nPHM/wBY84\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 20:03:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Form not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get single post on Form ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/forms/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "323e4567-e89b-12d3-a456-426614174002",
+									"description": "id Form"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "error:Form not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/forms/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"forms",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "223e4567-e89b-12d3-a456-426614174001"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-uqha6DV/zzB+8ej81nPHM/wBY84\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 20:11:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Form not found\"\n}"
+						},
+						{
+							"name": "success view post id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/forms/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"forms",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "323e4567-e89b-12d3-a456-426614174002",
+											"description": "id Form"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "431"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1af-Qtxv26wpfBA+Onph32yTzFtJ3Q4\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 20:12:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"323e4567-e89b-12d3-a456-426614174002\",\n        \"name\": \"user\",\n        \"email\": \"user@example.com\",\n        \"subject\": \"Kerjasama\",\n        \"message\": \"Saya ingin bekerja sama dengan perusahaan Anda.\",\n        \"userId\": \"223e4567-e89b-12d3-a456-426614174001\",\n        \"status\": \"pending\",\n        \"createdAt\": \"2025-03-27T06:42:56.986Z\",\n        \"updatedAt\": \"2025-03-27T06:42:56.986Z\",\n        \"user\": {\n            \"id\": \"223e4567-e89b-12d3-a456-426614174001\",\n            \"name\": \"User\",\n            \"email\": \"user@example.com\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create post Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user_email",
+									"value": "ray1@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "rio de",
+									"description": "30 character with space",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rio@dewa.com",
+									"description": "email",
+									"type": "text"
+								},
+								{
+									"key": "subject",
+									"value": "Penawaran",
+									"description": "255 character",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "saya ingin mengajukan penawaran di sini",
+									"description": "1000 character",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/forms",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forms"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_email",
+											"value": "ray1@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "rio de",
+											"description": "30 character",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "rio@dewa.com",
+											"description": "percentage 1-100, if 100 then the task has been completed",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "Penawaran",
+											"description": "255 character",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "saya ingin mengajukan penawaran di sini",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/forms",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"forms"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "327"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"147-uwFCxnJCPgRyzlTINjE+ahmq2SM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 06:44:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"b3bb2c44-ca79-469a-92e9-a9bb85f22f19\",\n        \"status\": \"pending\",\n        \"name\": \"rio de\",\n        \"email\": \"rio@dewa.com\",\n        \"subject\": \"Penawaran\",\n        \"message\": \"saya ingin mengajukan penawaran di sini\",\n        \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n        \"updatedAt\": \"2025-03-27T06:44:00.397Z\",\n        \"createdAt\": \"2025-03-27T06:44:00.397Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "post on user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/forms/mine",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forms",
+								"mine"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success view own post",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/forms/mine",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"forms",
+										"mine"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "651"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28b-kiKWcjBB0cu/IrodsUkrCkjXPs8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 06:46:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"b3bb2c44-ca79-469a-92e9-a9bb85f22f19\",\n            \"name\": \"rio de\",\n            \"email\": \"rio@dewa.com\",\n            \"subject\": \"Penawaran\",\n            \"message\": \"saya ingin mengajukan penawaran di sini\",\n            \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n            \"status\": \"in-progress\",\n            \"createdAt\": \"2025-03-27T06:44:00.397Z\",\n            \"updatedAt\": \"2025-03-27T06:44:27.233Z\"\n        },\n        {\n            \"id\": \"423e4567-e89b-12d3-a456-426614174003\",\n            \"name\": \"user\",\n            \"email\": \"user@example.com\",\n            \"subject\": \"Pemesanan\",\n            \"message\": \"Saya ingin memesan produk dari perusahaan Anda.\",\n            \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n            \"status\": \"in-progress\",\n            \"createdAt\": \"2025-03-27T06:42:56.986Z\",\n            \"updatedAt\": \"2025-03-27T06:42:56.986Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "rio de",
+									"description": "30 character with space",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rio@dewa.com",
+									"description": "email",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "ray1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "subject",
+									"value": "Penawaran",
+									"description": "255 character",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "saya ingin mengajukan penawaran di sini",
+									"description": "1000 character",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/forms",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"forms"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_email",
+											"value": "ray1@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "rio de",
+											"description": "30 character",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "rio@dewa.com",
+											"description": "percentage 1-100, if 100 then the task has been completed",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "Penawaran",
+											"description": "255 character",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "saya ingin mengajukan penawaran di sini",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/forms",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"forms"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "327"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"147-uwFCxnJCPgRyzlTINjE+ahmq2SM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 06:44:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"b3bb2c44-ca79-469a-92e9-a9bb85f22f19\",\n        \"status\": \"pending\",\n        \"name\": \"rio de\",\n        \"email\": \"rio@dewa.com\",\n        \"subject\": \"Penawaran\",\n        \"message\": \"saya ingin mengajukan penawaran di sini\",\n        \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n        \"updatedAt\": \"2025-03-27T06:44:00.397Z\",\n        \"createdAt\": \"2025-03-27T06:44:00.397Z\"\n    }\n}"
+						},
+						{
+							"name": "error:post with Spam or Inject SQL",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_email",
+											"value": "ray1@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "rio de",
+											"description": "30 character",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "rio@dewa.com",
+											"description": "percentage 1-100, if 100 then the task has been completed",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "Penawaran",
+											"description": "255 character",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "saya ingin mengajukan penawaran di sini <script>babab</script>",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/forms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"forms"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "115"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"73-zRDDLk/K48SaBr4t8xFrwMSnJC0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Mar 2025 06:54:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Server Error\",\n    \"error\": \"Validation error: Message contains unsafe content: \\\"<script\\\"\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Check User Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/auth/me",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Succes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/auth/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "210"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d2-YLzRy5tH0KSWlhmtq+FeiIW+9Eo\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 27 Mar 2025 06:44:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"user\": {\n        \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"role\": \"admin\",\n        \"createdAt\": \"2025-03-27T06:42:56.971Z\",\n        \"updatedAt\": \"2025-03-27T06:42:56.971Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "sigup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "ray1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						},
+						{
+							"key": "confirmPassword",
+							"value": "admin123",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "r",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/auth/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "ray1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "text"
+								},
+								{
+									"key": "confirmPassword",
+									"value": "admin123",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "r",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "317"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"13d-ZikVUU6h43h81hq4OqCZpdLHJQE\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 27 Mar 2025 06:45:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"user\": {\n        \"id\": \"3fe3142b-69c9-43bb-a9df-55d2d837f75d\",\n        \"name\": \"r\",\n        \"email\": \"ray1@gmail.com\",\n        \"role\": \"user\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNmZTMxNDJiLTY5YzktNDNiYi1hOWRmLTU1ZDJkODM3Zjc1ZCIsImlhdCI6MTc0MzA1NzkwNCwiZXhwIjoxNzQzMTQ0MzA0fQ.46F4YXEbkdj5FQPsP_ZCyVrupZJ5dRpSAqnZ3-Wv6-M\"\n}"
+				},
+				{
+					"name": "error:User already exists",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "ray1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "text"
+								},
+								{
+									"key": "confirmPassword",
+									"value": "admin123",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "r",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"31-WKEMg8zALB1Ko0WjUHi/6RBGHVc\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 27 Mar 2025 19:51:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"User already exists\"\n}"
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "ray1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "johndoe@example.com",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/auth/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "ray1@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "johndoe@example.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "330"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"14a-mmyDXItjKn2ZDcpbyF6HgguV7Lw\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 27 Mar 2025 06:43:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"user\": {\n        \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"role\": \"admin\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyM2U0NTY3LWU4OWItMTJkMy1hNDU2LTQyNjYxNDE3NDAwMCIsImlhdCI6MTc0MzA1Nzc5MiwiZXhwIjoxNzQzMTQ0MTkyfQ.adhN5Sxewal5evPjzCbhzr7ncMkdlQfOCW-74VsCYK4\"\n}"
+				},
+				{
+					"name": "error:Password Credentials",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "ray1@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "admin1234",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "johndoe@example.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "58"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3a-AcOgo88YTVa1dcSC7vTAP5UvDJA\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 27 Mar 2025 19:55:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Invalid Password Credentials\"\n}"
+				},
+				{
+					"name": "error:User Not Found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "ray1@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "johndoe@example.com1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "44"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2c-mG8A1/2y3YP6j1eelID4tuuGJ9U\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 27 Mar 2025 19:55:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"User Not Found\"\n}"
+				}
+			]
+		}
+	]
+}
