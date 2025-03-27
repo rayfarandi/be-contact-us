@@ -38,15 +38,30 @@ cd contact-form-api
  #### Create a .env file in the root directory and fill in your environment variables:
  
  ```
- PORT=5000
-DATABASE_URL=your_database_connection_string
-JWT_SECRET=your_jwt_secret
+# Database Configuration
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD="your pass db"
+DB_NAME=sequelize "name on your DB"
+DB_HOST=localhost
+
+# Server Configuration
+PORT=3001
+
+
+# JWT Secret
+JWT_SECRET="test"
 JWT_EXPIRE=1d
-NODE_ENV=development
 
  ```
  
  ## Run Migrations or Sync Models
+ ```
+Create Db first, name is "sequelize"
+
+Run on your terminal project
+node seed.js
+```
  
  ### If you're using Sequelize sync:
  
