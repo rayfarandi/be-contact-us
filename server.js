@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const setupSwagger = require('./swagger');
 
 // Load environment variables
 dotenv.config();
@@ -20,6 +21,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+
+// Swagger
+setupSwagger(app);
 
 // Mount routes
 app.use('/api/auth', authRoutes);
