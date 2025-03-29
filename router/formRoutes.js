@@ -48,6 +48,8 @@ const { protect, adminOnly } = require('../middleware/authMiddleware');
  *     responses:
  *       201:
  *         description: Form submitted successfully
+ *       401:
+ *         description: Unauthorized
  */
 router.post('/', protect,submitForm);
 

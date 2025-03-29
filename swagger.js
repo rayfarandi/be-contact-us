@@ -10,14 +10,30 @@ const options = {
       description: "API documentation for Contact Us Form",
     },
     servers: [{ url: "http://localhost:3001" }], // URL server
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: "apiKey",
+          name: "Authorization",
+          in: "header",
+          description:
+            'Enter your token with "Bearer " prefix. Example: Bearer eyJhbGciOiJIUzI1...',
+        },
+      },
+    },
+    security: [
+      {
+        BearerAuth: [],
+      },
+    ],
   },
   apis: ["./router/*.js"], // Lokasi file route
 };
 
 const swaggerSpec = swaggerJSDoc(options);
 
-const setupSwagger = (app) => {
+function setupSwagger(app) {
   app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
-};
+}
 
 module.exports = setupSwagger;
